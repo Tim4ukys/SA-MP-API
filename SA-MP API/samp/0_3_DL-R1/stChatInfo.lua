@@ -38,12 +38,11 @@ sys.ffi.cdef[[
 		void							*pID3DXRenderToSurface;
 		void							*m_pTexture;
 		void							*pSurface;
-		void							*pD3DDisplayMode;
-		int								iUnk1[3];
-		int								iUnk2;
-		int								m_iRedraw;
-		int								m_nPrevScrollBarPosition;
-		int								m_iFontSizeY;
-		int								m_iTimestampWidth;
+		unsigned int	*pD3DDisplayMode[4];
+		int					iUnk1[2];
+		int					m_iRedraw;
+		long 				m_nPrevScrollBarPosition;
+		long 				m_iFontSizeY;
+		long 				m_iTimestampWidth;
 	}__attribute__ ((packed));
 ]]
