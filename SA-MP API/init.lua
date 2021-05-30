@@ -241,4 +241,28 @@ function module.SetSpecialAction( actionId )
 	ffi.cast( 'void ( __thiscall * )( void *, char )', module.Handle + offset.fnSetSpecialAction[module.Version] )( this, actionId )
 end
 
+-- Update 
+function module.AddChatMessage( msgColor, msg )
+	module.AddMessageToChat( 8, msg, nullptr, msgColor, 0 )
+end
+
+function module.TextdrawIsExists( id )
+	local this = module.Get().pBase.pPools.pTextdraw
+	if ( this == 0x0 ) then return end
+
+	id = tonumber(id) or 0
+	return this.iIsListed[id] == 1
+end
+
+function module.TextdrawGetString( id )
+	local this = module.Get().pBase.pPools.pTextdraw.textdraw[id]
+	if ( this == 0x0 ) then return end
+
+	id = tonumber(id) or 0
+	if (module.TextdrawIsExists(id)) then
+		return this.szText
+	end
+	return ''
+end
+
 return module
