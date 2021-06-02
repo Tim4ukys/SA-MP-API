@@ -9,7 +9,7 @@ local mem = require( 'memory' )
 local ffi = require( 'ffi' )
 
 local module = {
-	_version = 0.1, -- beta-0.1
+	_version = 1.1,
 
 	Version = nil,
 	Handle 	= 0x0,
