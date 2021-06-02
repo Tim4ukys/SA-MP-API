@@ -31,13 +31,15 @@ local offset = {
 	fnSetInputMode        	= {['0_3_7-R1'] = 0x09BD30, ['0_3_7-R3'] = 0x0678A0, ['0_3_DL-R1'] = 0x0A0530};
 	fnUnlockActorCam      	= {['0_3_7-R1'] = 0x09BC10, ['0_3_7-R3'] = 0x09FEC0, ['0_3_DL-R1'] = 0x0A0410};
 	fnUpdateScoreboard    	= {['0_3_7-R1'] = 0x008A10, ['0_3_7-R3'] = 0x008BA0, ['0_3_DL-R1'] = 0x008C00};
-	-- fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 		   , ['0_3_DL-R1'] = 0x075040};
 	fnSay                 	= {['0_3_7-R1'] = 0x0057F0, ['0_3_7-R3'] = 0x005820, ['0_3_DL-R1'] = 0x005860};
 	fnSendCmd				= {['0_3_7-R1'] = 0x065C60, ['0_3_7-R3'] = 0x069190, ['0_3_DL-R1'] = 0x069340};
 	fnSendInteriorChange  	= {['0_3_7-R1'] = 0x005740, ['0_3_7-R3'] = 0x005780, ['0_3_DL-R1'] = 0x0057C0};
 	fnRequestClass        	= {['0_3_7-R1'] = 0x0056A0, ['0_3_7-R3'] = 0x0056E0, ['0_3_DL-R1'] = 0x005720};
 	fnDisableScoreboard		= {['0_3_7-R1'] = 0x06A320, ['0_3_7-R3'] = 0x06E270, ['0_3_DL-R1'] = 0x06E410};
 	fnSetSpecialAction    	= {['0_3_7-R1'] = 0x0030C0, ['0_3_7-R3'] = 0x0030C0, ['0_3_DL-R1'] = 0x003110};
+
+	-- thanks Parazitas from ugbase.eu
+	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x12DD3C, ['0_3_DL-R1'] = 0x075040};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
@@ -161,9 +163,9 @@ function module._RegisterClientCommand( cmd, func )
 	ffi.cast( 'void ( __thiscall * )( void *, char *, CMDPROC )', module.Handle + offset.fnAddChatCmd[module.Version] )( this, cmd, callback )
 end
 
---[[function module.TakeScreenshot()
+function module.TakeScreenshot()
 	ffi.cast( 'void ( __cdecl * )( void )', module.Handle + offset.fnTakeScreenshot[module.Version] )( )
-end]]
+end
 
 function module.RequestSpawn()
 	local this = module.Get().pBase.pPools.pPlayer.pLocalPlayer
