@@ -39,7 +39,7 @@ local offset = {
 	fnSetSpecialAction    	= {['0_3_7-R1'] = 0x0030C0, ['0_3_7-R3'] = 0x0030C0, ['0_3_DL-R1'] = 0x003110};
 
 	-- thanks Parazitas from ugbase.eu
-	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x12DD3C, ['0_3_DL-R1'] = 0x075040};
+	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x074EB0, ['0_3_DL-R1'] = 0x075040};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
