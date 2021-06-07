@@ -40,6 +40,7 @@ local offset = {
 
 	-- thanks Parazitas from ugbase.eu
 	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x074EB0, ['0_3_DL-R1'] = 0x075040};
+	-- fnDialogHook			= {['0_3_7-R1'] = 0x06C040, ['0_3_7-R3'] = 0x06FF40, ['0_3_DL-R1'] = 0x0700D0};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
