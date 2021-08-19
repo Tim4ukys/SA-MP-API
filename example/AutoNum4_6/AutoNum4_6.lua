@@ -32,8 +32,8 @@ function main()
 
 	while true do
         wait(100 + getPing())
-        local textdrawText = ffi.string(dl.TextdrawGetString(2188))
-        local textdrawTextfish = ffi.string(dl.TextdrawGetString(2151))
+        local textdrawText = ffi.string(dl.TextdrawGetString(2189))
+        local textdrawTextfish = ffi.string(dl.TextdrawGetString(2157))
 
         if (isInputOpen() == false) then
             if textdrawText == "~y~PRESS NUM4" or textdrawTextfish == "~y~PRESS NUM4" then 
