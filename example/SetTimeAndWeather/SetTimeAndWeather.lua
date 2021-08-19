@@ -21,7 +21,7 @@ function cmdSetTime(param)
 
         local textbuff = string.format(cp1251"[{FF9900}SetTime{990000}] {FF9900}Новое время {990000}- {FF9900}%02d:00{990000}!", hour)
         -- print(textbuff)
-        dl.AddMessageToChat(8, ffi.new("char[" .. string.len( textbuff ) .. "]", textbuff), nullptr, 0x990000, 0)
+        dl.AddMessageToChat(8, ffi.new("char[" .. string.len( textbuff ) + 1 .. "]", textbuff), nullptr, 0x990000, 0)
     else
         dl.AddMessageToChat(8, cp1251"[{FF9900}SetTime{990000}] {FF9900}/set_time {606060}[0 - 23]", nullptr, 0x990000, 0)
     end
@@ -38,7 +38,7 @@ function cmdSetWeather(param)
 
         local textbuff = string.format(cp1251"[{FF9900}SetWeather{990000}] {FF9900}Новая погода {990000}- {FF9900}%d{990000}!", weather)
         -- print(textbuff)
-        dl.AddMessageToChat(8, ffi.new("char[" .. string.len( textbuff ) .. "]", textbuff), nullptr, 0x990000, 0)
+        dl.AddMessageToChat(8, ffi.new("char[" .. string.len( textbuff ) + 1 .. "]", textbuff), nullptr, 0x990000, 0)
     else
         dl.AddMessageToChat(8, cp1251"[{FF9900}SetWeather{990000}] {FF9900}/set_weather {606060}[0 - 45]", nullptr, 0x990000, 0)
     end
