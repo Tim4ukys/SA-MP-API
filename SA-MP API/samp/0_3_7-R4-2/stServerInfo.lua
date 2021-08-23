@@ -1,12 +1,8 @@
 --[[
-	Project: SA-MP API
-	
-	Author: LUCHARE
-	
+	Project: SA-MP-API
 
-	All structures are taken from mod_s0beit_sa.
-	Copyright: BlastHack
-	mod_sa is available from https://github.com/BlastHackNet/mod_s0beit_sa/
+	Author: Tim4ukys
+	My url: vk.com/tim4ukys
 ]]
 
 local sys = require 'SA-MP API.kernel'
