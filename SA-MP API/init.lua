@@ -16,31 +16,29 @@ local module = {
 }
 
 local offset = {
-	stChatInfo  			= {['0_3_7-R1'] = 0x21A0E4, ['0_3_7-R3'] = 0x26E8C8, ['0_3_DL-R1'] = 0x2ACA10};
-	stInputInfo 			= {['0_3_7-R1'] = 0x21A0E8, ['0_3_7-R3'] = 0x26E8CC, ['0_3_DL-R1'] = 0x2ACA14};
-	stKillInfo  			= {['0_3_7-R1'] = 0x21A0EC, ['0_3_7-R3'] = 0x26E8D0, ['0_3_DL-R1'] = 0x2ACA18};
-	stSAMP      			= {['0_3_7-R1'] = 0x21A0F8, ['0_3_7-R3'] = 0x26E8DC, ['0_3_DL-R1'] = 0x2ACA24};
-	stScoreboardInfo  		= {['0_3_7-R1'] = 0x21A0B4, ['0_3_7-R3'] = 0x26E894, ['0_3_DL-R1'] = 0x2AC9DC};
-	stDialogInfo      		= {['0_3_7-R1'] = 0x21A0B8, ['0_3_7-R3'] = 0x26E898, ['0_3_DL-R1'] = 0x2AC9E0};
-	stGameInfo				= {['0_3_7-R1'] = 0x21A10C, ['0_3_7-R3'] = 0x26E8F4, ['0_3_DL-R1'] = 0x2ACA3C};
+	stChatInfo  			= {['0_3_7-R1'] = 0x21A0E4, ['0_3_7-R3'] = 0x26E8C8, ['0_3_DL-R1'] = 0x2ACA10, ['0_3_7-R4-2'] = 0x26E9F8};
+	stInputInfo 			= {['0_3_7-R1'] = 0x21A0E8, ['0_3_7-R3'] = 0x26E8CC, ['0_3_DL-R1'] = 0x2ACA14, ['0_3_7-R4-2'] = 0x26E9FC};
+	stKillInfo  			= {['0_3_7-R1'] = 0x21A0EC, ['0_3_7-R3'] = 0x26E8D0, ['0_3_DL-R1'] = 0x2ACA18, ['0_3_7-R4-2'] = 0x26EA00};
+	stSAMP      			= {['0_3_7-R1'] = 0x21A0F8, ['0_3_7-R3'] = 0x26E8DC, ['0_3_DL-R1'] = 0x2ACA24, ['0_3_7-R4-2'] = 0x26EA0C};
+	stScoreboardInfo  		= {['0_3_7-R1'] = 0x21A0B4, ['0_3_7-R3'] = 0x26E894, ['0_3_DL-R1'] = 0x2AC9DC, ['0_3_7-R4-2'] = 0x26E9C4};
+	stDialogInfo      		= {['0_3_7-R1'] = 0x21A0B8, ['0_3_7-R3'] = 0x26E898, ['0_3_DL-R1'] = 0x2AC9E0, ['0_3_7-R4-2'] = 0x26E9C8};
+	stGameInfo				= {['0_3_7-R1'] = 0x21A10C, ['0_3_7-R3'] = 0x26E8F4, ['0_3_DL-R1'] = 0x2ACA3C, ['0_3_7-R4-2'] = 0x26EA24};
 
-	fnAddChatCmd      		= {['0_3_7-R1'] = 0x065AD0, ['0_3_7-R3'] = 0x069000, ['0_3_DL-R1'] = 0x0691B0};
-	fnRequestSpawn			= {['0_3_7-R1'] = 0x003EC0, ['0_3_7-R3'] = 0x003A20, ['0_3_DL-R1'] = 0x003F40};
-	fnSpawn					= {['0_3_7-R1'] = 0x003AD0, ['0_3_7-R3'] = 0x003AD0, ['0_3_DL-R1'] = 0x003B20};
-	fnAddChatMsg          	= {['0_3_7-R1'] = 0x064010, ['0_3_7-R3'] = 0x067460, ['0_3_DL-R1'] = 0x067650};
-	fnSetInputMode        	= {['0_3_7-R1'] = 0x09BD30, ['0_3_7-R3'] = 0x09FFE0, ['0_3_DL-R1'] = 0x0A0530};
-	fnUnlockActorCam      	= {['0_3_7-R1'] = 0x09BC10, ['0_3_7-R3'] = 0x09FEC0, ['0_3_DL-R1'] = 0x0A0410};
-	fnUpdateScoreboard    	= {['0_3_7-R1'] = 0x008A10, ['0_3_7-R3'] = 0x008BA0, ['0_3_DL-R1'] = 0x008C00};
-	fnSay                 	= {['0_3_7-R1'] = 0x0057F0, ['0_3_7-R3'] = 0x005820, ['0_3_DL-R1'] = 0x005860};
-	fnSendCmd				= {['0_3_7-R1'] = 0x065C60, ['0_3_7-R3'] = 0x069190, ['0_3_DL-R1'] = 0x069340};
-	fnSendInteriorChange  	= {['0_3_7-R1'] = 0x005740, ['0_3_7-R3'] = 0x005780, ['0_3_DL-R1'] = 0x0057C0};
-	fnRequestClass        	= {['0_3_7-R1'] = 0x0056A0, ['0_3_7-R3'] = 0x0056E0, ['0_3_DL-R1'] = 0x005720};
-	fnDisableScoreboard		= {['0_3_7-R1'] = 0x06A320, ['0_3_7-R3'] = 0x06E270, ['0_3_DL-R1'] = 0x06E410};
-	fnSetSpecialAction    	= {['0_3_7-R1'] = 0x0030C0, ['0_3_7-R3'] = 0x0030C0, ['0_3_DL-R1'] = 0x003110};
+	fnAddChatCmd      		= {['0_3_7-R1'] = 0x065AD0, ['0_3_7-R3'] = 0x069000, ['0_3_DL-R1'] = 0x0691B0, ['0_3_7-R4-2'] = 0x069770};
+	fnRequestSpawn			= {['0_3_7-R1'] = 0x003EC0, ['0_3_7-R3'] = 0x003ED0, ['0_3_DL-R1'] = 0x003F40, ['0_3_7-R4-2'] = 0x004060};
+	fnSpawn					= {['0_3_7-R1'] = 0x003AD0, ['0_3_7-R3'] = 0x003AD0, ['0_3_DL-R1'] = 0x003B20, ['0_3_7-R4-2'] = 0x003C20};
+	fnAddChatMsg          	= {['0_3_7-R1'] = 0x064010, ['0_3_7-R3'] = 0x067460, ['0_3_DL-R1'] = 0x067650, ['0_3_7-R4-2'] = 0x067BE0};
+	fnSetInputMode        	= {['0_3_7-R1'] = 0x09BD30, ['0_3_7-R3'] = 0x09FFE0, ['0_3_DL-R1'] = 0x0A0530, ['0_3_7-R4-2'] = 0x0A0750};
+	fnUnlockActorCam      	= {['0_3_7-R1'] = 0x09BC10, ['0_3_7-R3'] = 0x09FEC0, ['0_3_DL-R1'] = 0x0A0410, ['0_3_7-R4-2'] = 0x0A0630};
+	fnUpdateScoreboard    	= {['0_3_7-R1'] = 0x008A10, ['0_3_7-R3'] = 0x008BA0, ['0_3_DL-R1'] = 0x008C00, ['0_3_7-R4-2'] = 0x008F10};
+	fnSay                 	= {['0_3_7-R1'] = 0x0057F0, ['0_3_7-R3'] = 0x005820, ['0_3_DL-R1'] = 0x005860, ['0_3_7-R4-2'] = 0x005A10};
+	fnSendCmd				= {['0_3_7-R1'] = 0x065C60, ['0_3_7-R3'] = 0x069190, ['0_3_DL-R1'] = 0x069340, ['0_3_7-R4-2'] = 0x069900};
+	fnSendInteriorChange  	= {['0_3_7-R1'] = 0x005740, ['0_3_7-R3'] = 0x005780, ['0_3_DL-R1'] = 0x0057C0, ['0_3_7-R4-2'] = 0x005970};
+	fnRequestClass        	= {['0_3_7-R1'] = 0x0056A0, ['0_3_7-R3'] = 0x0056E0, ['0_3_DL-R1'] = 0x005720, ['0_3_7-R4-2'] = 0x0058D0};
+	fnDisableScoreboard		= {['0_3_7-R1'] = 0x06A320, ['0_3_7-R3'] = 0x06E270, ['0_3_DL-R1'] = 0x06E410, ['0_3_7-R4-2'] = 0x06E9E0};
+	fnSetSpecialAction    	= {['0_3_7-R1'] = 0x0030C0, ['0_3_7-R3'] = 0x0030C0, ['0_3_DL-R1'] = 0x003110, ['0_3_7-R4-2'] = 0x0030F0};
 
-	-- thanks Parazitas from ugbase.eu
-	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x074EB0, ['0_3_DL-R1'] = 0x075040};
-	-- fnDialogHook			= {['0_3_7-R1'] = 0x06C040, ['0_3_7-R3'] = 0x06FF40, ['0_3_DL-R1'] = 0x0700D0};
+	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x074EB0, ['0_3_DL-R1'] = 0x075040, ['0_3_7-R4-2'] = 0x075620};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
@@ -67,6 +65,8 @@ function module.GetIsAvailable()
 		module.Version = '0_3_DL-R1'
 	elseif ( cmp == 'E86D9A0A0083C41C85C0' ) then
 		module.Version = '0_3_7-R3'
+	elseif ( cmp == 'C07406889E3402000088' ) then
+		module.Version = '0_3_7-R4-2'
 	else
 		error( 'Unknown SA-MP Version.' )
 	end
