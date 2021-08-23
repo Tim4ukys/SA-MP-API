@@ -3,6 +3,9 @@
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/Tim4ukys/SA-MP-API?label=version)](https://github.com/Tim4ukys/SA-MP-API/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/Tim4ukys/SA-MP-API)](https://github.com/Tim4ukys/SA-MP-API/releases)
 
+<!-- ![logo_samp-api](./image/render-logo_1.png) -->
+<img src="./image/render-logo_1.png" align=center>
+
 ## SA-MP API
 
 Библиотека для взаимодействия с функциями, классами и структурами клиента SA-MP на языке _LUA_.
