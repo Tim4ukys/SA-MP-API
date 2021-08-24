@@ -1,15 +1,15 @@
 --[[
 	Project: SA-MP API
-	Author: LUCHARE
-	Website: BlastHack.Net
-	Copyright (c) 2018
+	Author: LUCHARE, Tim4ukys
+	Website: BlastHack.Net, vk.com/tim4ukys
+	Copyright (c) 2018, 2021
 ]]
 
 local mem = require( 'memory' )
 local ffi = require( 'ffi' )
 
 local module = {
-	_version = 1.11,
+	_version = 2.1,
 
 	Version = nil,
 	Handle 	= 0x0,
@@ -38,7 +38,10 @@ local offset = {
 	fnDisableScoreboard		= {['0_3_7-R1'] = 0x06A320, ['0_3_7-R3'] = 0x06E270, ['0_3_DL-R1'] = 0x06E410, ['0_3_7-R4-2'] = 0x06E9E0};
 	fnSetSpecialAction    	= {['0_3_7-R1'] = 0x0030C0, ['0_3_7-R3'] = 0x0030C0, ['0_3_DL-R1'] = 0x003110, ['0_3_7-R4-2'] = 0x0030F0};
 
+	-- Update v1.1.1(Jun 2, 2021)
 	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x074EB0, ['0_3_DL-R1'] = 0x075040, ['0_3_7-R4-2'] = 0x075620};
+	-- Update v2.1(Aug 23, 2021)
+	fnShowDialog			= {['0_3_7-R1'] = 0x06B9C0, ['0_3_7-R3'] = 0x06F8C0, ['0_3_DL-R1'] = 0x06FA50, ['0_3_7-R4-2'] = 0x070010};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
@@ -77,13 +80,13 @@ end
 function module.Get()
 	if ( define ~= nil ) then define( module.Version ); define = nil end
 	return {
-		pChat 						 = cast( 'stChatInfo' ),
-		pChatInput 			   = cast( 'stInputInfo' ),
-		pKillList 				 = cast( 'stKillInfo' ),
-		pBase 					 	 = cast( 'stSAMP' ),
-		pScoreboard 			 = cast( 'stScoreboardInfo' ),
-		pRecentDialog      = cast( 'stDialogInfo' ),
-		pMisc              = cast( 'stGameInfo' ),
+		pChat 				= cast( 'stChatInfo' ),
+		pChatInput 			= cast( 'stInputInfo' ),
+		pKillList 			= cast( 'stKillInfo' ),
+		pBase 				= cast( 'stSAMP' ),
+		pScoreboard 		= cast( 'stScoreboardInfo' ),
+		pRecentDialog      	= cast( 'stDialogInfo' ),
+		pMisc              	= cast( 'stGameInfo' ),
 
 		-- see samp/%version%/enums.lua
 		Enum = require( 'SA-MP API.samp.' .. module.Version .. '.enums' )
@@ -164,10 +167,6 @@ function module._RegisterClientCommand( cmd, func )
 	ffi.cast( 'void ( __thiscall * )( void *, char *, CMDPROC )', module.Handle + offset.fnAddChatCmd[module.Version] )( this, cmd, callback )
 end
 
-function module.TakeScreenshot()
-	ffi.cast( 'void ( __cdecl * )( void )', module.Handle + offset.fnTakeScreenshot[module.Version] )( )
-end
-
 function module.RequestSpawn()
 	local this = module.Get().pBase.pPools.pPlayer.pLocalPlayer
 	if ( this == 0x0 ) then return end
@@ -244,7 +243,12 @@ function module.SetSpecialAction( actionId )
 	ffi.cast( 'void ( __thiscall * )( void *, char )', module.Handle + offset.fnSetSpecialAction[module.Version] )( this, actionId )
 end
 
--- Update 
+-- Update v1.1.1(Jun 2, 2021)
+
+function module.TakeScreenshot()
+	ffi.cast( 'void ( __cdecl * )( void )', module.Handle + offset.fnTakeScreenshot[module.Version] )( )
+end
+
 function module.AddChatMessage( msgColor, msg )
 	module.AddMessageToChat( 8, msg, nullptr, msgColor, 0 )
 end
@@ -266,6 +270,22 @@ function module.TextdrawGetString( id )
 		return this.szText
 	end
 	return ''
+end
+
+-- Update v2.1(Aug 23, 2021)
+
+function module.ShowDialog( iID, iStyle, szCaption, szText, szButton1, szButton2, bSendRequestToServer )
+	local this = module.Get().pRecentDialog
+	if ( this == 0x0 ) then return end
+
+	ffi.cast( 'void ( __thiscall * )( void *, int, int, const char*, const char*, const char*, const char*, bool )', module.Handle + offset.fnShowDialog[module.Version] )( this, iID, iStyle, szCaption, szText, szButton1, szButton2, bSendRequestToServer )
+end
+
+function module.GetCurrentWeaponID(  )
+	local this = module.Get().pBase.pPools.pPlayer.pLocalPlayer
+	if ( this == 0x0 ) then return 0 end
+
+	return this.byteCurrentWeapon
 end
 
 return module

@@ -7,14 +7,14 @@
 
 local sys = require 'SA-MP API.kernel'
 
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stPlayerPool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stVehiclePool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stPickupPool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stTextdrawPool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stTextLabelPool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stGangzonePool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stObjectPool'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stActorPool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stPlayerPool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stVehiclePool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stPickupPool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stTextdrawPool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stTextLabelPool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stGangzonePool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stObjectPool'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stActorPool'
 
 sys.ffi.cdef[[
 	struct stSAMPPools {

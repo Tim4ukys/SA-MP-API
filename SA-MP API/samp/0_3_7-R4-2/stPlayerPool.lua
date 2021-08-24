@@ -7,8 +7,8 @@
 
 local sys = require 'SA-MP API.kernel'
 
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stLocalPlayer'
-sys.safely_include 'SA-MP API.samp.0_3_7-R3.stRemotePlayer'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stLocalPlayer'
+sys.safely_include 'SA-MP API.samp.0_3_7-R4-2.stRemotePlayer'
 
 sys.ffi.cdef[[
 	struct stPlayerPool {
@@ -18,7 +18,7 @@ sys.ffi.cdef[[
 		void					 		*pVTBL_txtHandler;
 		char							strLocalPlayerName[24];
 		int								iLocalPlayerPing;
-		stLocalPlayer					*pLocalPlayer;
+		stLocalPlayer					*pLocalPlayer; 	// -- +26h
 
 		int								iIsListed[1004];
 		unsigned int					dwPlayerIP[1004];
