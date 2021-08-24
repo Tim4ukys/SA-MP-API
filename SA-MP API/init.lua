@@ -9,7 +9,7 @@ local mem = require( 'memory' )
 local ffi = require( 'ffi' )
 
 local module = {
-	_version = 2.1,
+	_version = 2.2,
 
 	Version = nil,
 	Handle 	= 0x0,
@@ -42,6 +42,10 @@ local offset = {
 	fnTakeScreenshot      	= {['0_3_7-R1'] = 0x070FC0, ['0_3_7-R3'] = 0x074EB0, ['0_3_DL-R1'] = 0x075040, ['0_3_7-R4-2'] = 0x075620};
 	-- Update v2.1(Aug 23, 2021)
 	fnShowDialog			= {['0_3_7-R1'] = 0x06B9C0, ['0_3_7-R3'] = 0x06F8C0, ['0_3_DL-R1'] = 0x06FA50, ['0_3_7-R4-2'] = 0x070010};
+	-- Update v2.2(Aug 24, 2021)
+	stAudioStream 			= {['0_3_7-R1'] = 0x21A0F0, ['0_3_7-R3'] = 0x26E8D4, ['0_3_DL-R1'] = 0x2ACA1C, ['0_3_7-R4-2'] = 0x26EA04};
+	fnAudioStreamPlay 		= {['0_3_7-R1'] = 0x062DA0, ['0_3_7-R3'] = 0x0661F0, ['0_3_DL-R1'] = 0x0663E0, ['0_3_7-R4-2'] = 0x066960};
+	fnAudioStreamStop 		= {['0_3_7-R1'] = 0x0629A0, ['0_3_7-R3'] = 0x065DF0, ['0_3_DL-R1'] = 0x065FE0, ['0_3_7-R4-2'] = 0x066560};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
@@ -286,6 +290,22 @@ function module.GetCurrentWeaponID(  )
 	if ( this == 0x0 ) then return 0 end
 
 	return this.byteCurrentWeapon
+end
+
+-- Update v2.2(Aug 24, 2021)
+
+function module.PlayAudioStream( szUrl, posX, posY, posZ, fRadius, bIs3d )
+	local this = ffi.cast( 'void**', module.Handle + offset['stAudioStream'][module.Version] )
+	if ( this == 0x0 ) then return end
+
+	return ffi.cast( 'int ( __thiscall* )( void *, const char*, float, float, float, float, bool )', module.Handle + offset.fnAudioStreamPlay[module.Version] )( this, szUrl, posX, posY, posZ, fRadius, bIs3d )
+end
+
+function module.StopAudioStream( bWait )
+	local this = ffi.cast( 'void**', module.Handle + offset['stAudioStream'][module.Version] )
+	if ( this == 0x0 ) then return end
+
+	return ffi.cast( 'int ( __thiscall* )( void *, bool )', module.Handle + offset.fnAudioStreamStop[module.Version] )( this, bWait )
 end
 
 return module

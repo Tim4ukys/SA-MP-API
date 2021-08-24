@@ -77,4 +77,9 @@ TextdrawGetString( id ) -- Получает Текст текстдрава
 
 -- Dialog
 ShowDialog( iID, iStyle, szCaption, szText, szButton1, szButton2, bSendRequestToServer ) -- Показывает DXUT диалог на экране
+
+-- AudioStream
+PlayAudioStream( szUrl, posX, posY, posZ, fRadius, bIs3d ) -- Проигрывает аудио-поток. Возращает значение BOOL(0 - false, не 0 - true)
+StopAudioStream( bWait ) -- Останавливает Аудио-поток. Возращает значение BOOL(0 - false, не 0 - true)
+
 ```
