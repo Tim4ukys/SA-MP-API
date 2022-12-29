@@ -9,7 +9,7 @@ local mem = require( 'memory' )
 local ffi = require( 'ffi' )
 
 local module = {
-	_version = 2.2,
+	_version = 2.3,
 
 	Version = nil,
 	Handle 	= 0x0,
@@ -46,6 +46,8 @@ local offset = {
 	stAudioStream 			= {['0_3_7-R1'] = 0x21A0F0, ['0_3_7-R3'] = 0x26E8D4, ['0_3_DL-R1'] = 0x2ACA1C, ['0_3_7-R4-2'] = 0x26EA04};
 	fnAudioStreamPlay 		= {['0_3_7-R1'] = 0x062DA0, ['0_3_7-R3'] = 0x0661F0, ['0_3_DL-R1'] = 0x0663E0, ['0_3_7-R4-2'] = 0x066960};
 	fnAudioStreamStop 		= {['0_3_7-R1'] = 0x0629A0, ['0_3_7-R3'] = 0x065DF0, ['0_3_DL-R1'] = 0x065FE0, ['0_3_7-R4-2'] = 0x066560};
+
+	fnGetPlayerName 		= {['0_3_7-R1'] = 0x013CE0, ['0_3_7-R3'] = 0x016F00, ['0_3_DL-R1'] = 0x0170D0, ['0_3_7-R4-2'] = 0x0175C0};
 };
 
 local define = require( 'SA-MP API.samp.definitions' )
@@ -306,6 +308,15 @@ function module.StopAudioStream( bWait )
 	if ( this == 0x0 ) then return end
 
 	return ffi.cast( 'int ( __thiscall* )( void *, bool )', module.Handle + offset.fnAudioStreamStop[module.Version] )( this, bWait )
+end
+
+-- Update v2.3(Aug 24, 2021)
+
+function module.GetPlayerName( Id )
+	local this = module.Get().pBase.pPools.pPlayer
+	if ( this == 0x0 ) then return end
+
+	return ffi.cast( 'const char* ( __thiscall* )( void*, unsigned short )', module.Handle + offset.fnGetPlayerName[module.Version] )( this, Id )
 end
 
 return module
